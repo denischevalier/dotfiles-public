@@ -1,5 +1,3 @@
-#!/bin/sh
-
 copy_files() {
   local dir=$(pwd)
 
@@ -48,7 +46,7 @@ copy_files() {
   # VIM
   [[ -d "${HOME}/.config/nvim" ]] || mkdir "${HOME}/.config/nvim"
   [[ -f "${HOME}/.config/nvim/init.vim" ]] && mv "${HOME}/.config/nvim/init.vim" "${HOME}/.config/init.vim.old"
-  [[ -f "${HOME}/.config/nvim/coc-setitngs.json" ]] && mv "${HOME}/.config/nvim/coc-setitngs.json" "${HOME}/.config/coc-setitngs.json.old"
+  [[ -f "${HOME}/.config/nvim/coc-settings.json" ]] && mv "${HOME}/.config/nvim/coc-settings.json" "${HOME}/.config/coc-settings.json.old"
   [[ -d "${HOME}/.vim" ]] && mv "${HOME}/.vim" "${HOME}/.vim.old"
   [[ -f "${HOME}/.vimrc.bundles" ]] && mv "${HOME}/.vimrc.bundles" "${HOME}/.vimrc.bundles.old"
   [[ -f "${HOME}/.vimrc" ]] && mv "${HOME}/.vimrc" "${HOME}/.vimrc.old"
@@ -56,7 +54,7 @@ copy_files() {
   ln -s "${dir}/vim" "${HOME}/.vim"
   ln -s "${dir}/vimrc.bundles" "${HOME}/.vimrc.bundles"
   ln -s "${dir}/vimrc" "${HOME}/.vimrc"
-  ln -s "${dir}/coc-setitngs.json" "${HOME}/.config/nvim/coc-setitngs.json"
+  ln -s "${dir}/coc-settings.json" "${HOME}/.config/nvim/coc-settings.json"
 }
 
 preinstall() {
@@ -88,20 +86,26 @@ preinstall() {
 
 postinstall() {
   # NeoVim plugins
+  sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   nvim -c "PlugInstall|qa"
   nvim -c "CocInstall coc-python coc-fzf-preview coc-golines coc-highlight coc-markdownlint coc-markdown-preview-enhanced coc-prettier coc-sh coc-yaml coc-viml coc-git coc-json coc-go coc-haskell coc-solargraph|qa"
 }
 
 read -p "Do you want to install prerequisites? [y/n]" -n 1 -r
 echo
-if [[ ${REPLY} =? ^[Yy]$ ]]
+if [[ ${REPLY} = "y" ]]; then
   preinstall
 fi
 
-copy_files
+read -p "Do you want to copy files? [y/n]" -n 1 -r
+echo
+if [[ ${REPLY} = "y" ]]; then
+  copy_files
+fi
 
 read -p "Do you want to run post install hooks? [y/n]" -n 1 -r
 echo
-if [[ ${REPLY} =? ^[Yy]$ ]]
+if [[ ${REPLY} = "y" ]]; then
   postinstall
 fi
