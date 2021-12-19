@@ -7,3 +7,6 @@
 [submodule "vim/plugged/Align"]
 	path = vim/plugged/Align
 	url = git@github.com:vim-scripts/Align.git
+[submodule "Align"]
+	path = Align
+	url = git@github.com:vim-scripts/Align.git
