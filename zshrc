@@ -1,9 +1,11 @@
-# Load scripts
-local zshenv="${HOME}"/.zsh
+local zshenv="${HOME}/.zsh/"
 local city="Toulon"
 
-# Source prezto
-[[ -s "${zshenv}"/prezto/init.zsh ]] && source "${HOME}"/prezto/init.zsh 
+autoload -Uz compinit
+compinit
+
+# Load scripts
+[[ -s "${zshenv}"/.prezto/init.zsh ]] && source "${HOME}"/.prezto/init.zsh 
 
 [ -f "${HOME}/.fzf.zsh" ] && source "${HOME}/.fzf.zsh"
 

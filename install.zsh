@@ -29,6 +29,7 @@ copy_files() {
 
   # ZSH
   [[ -d "${HOME}/.zsh" ]] && mv "${HOME}/.zsh" "${HOME}/.zsh.old"
+  [[ -d "${HOME}/.prezto" ]] && mv "${HOME}/.prezto" "${HOME}/.prezto.old"
   [[ -f "${HOME}/.zshrc" ]] && mv "${HOME}/.zshrc" "${HOME}/.zshrc.old"
   [[ -f "${HOME}/.zpreztorc" ]] && mv "${HOME}/.zpreztorc" "${HOME}/.zpreztorc.old"
   [[ -f "${HOME}/.zshenv" ]] && mv "${HOME}/.zshenv" "${HOME}/.zshenv.old"
@@ -36,6 +37,7 @@ copy_files() {
   [[ -f "${HOME}/.zlogout" ]] && mv "${HOME}/.zlogout" "${HOME}/.zlogout.old"
   [[ -f "${HOME}/.zprofile" ]] && mv "${HOME}/.zprofile" "${HOME}/.zprofile.old"
   ln -s "${dir}/zsh" "${HOME}/.zsh"
+  ln -s "${dir}/zsh/prezto" "${HOME}/.prezto"
   ln -s "${dir}/zshrc" "${HOME}/.zshrc"
   ln -s "${dir}/zpreztorc" "${HOME}/.zpreztorc"
   ln -s "${dir}/zsh/prezto/runcoms/zshenv" "${HOME}/.zshenv"
