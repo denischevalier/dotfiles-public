@@ -1,0 +1,9 @@
+[submodule "zsh/zsh-dircolors-nord"]
+	path = zsh/zsh-dircolors-nord
+	url = git@github.com:coltondick/zsh-dircolors-nord.git
+[submodule "zsh/prezto"]
+	path = zsh/prezto
+	url = git@github.com:sorin-ionescu/prezto.git
+[submodule "vim/plugged/Align"]
+	path = vim/plugged/Align
+	url = git@github.com:vim-scripts/Align.git

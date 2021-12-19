@@ -1,0 +1,21 @@
+# Setup aliases
+alias r="source ${HOME}/.zshrc"
+alias t="tmux source ${HOME}/.tmux.conf"
+alias f="fortune goedel"
+type nvim 2>&1 >/dev/null && alias z="nvim ${HOME}/.zshrc"
+type nvim 2>&1 >/dev/null && alias v=nvim
+type nvim 2>&1 >/dev/null && alias zt="nvim ${HOME}/.tmux.conf -O ${HOME}/.tmux.conf.local"
+alias s="cd .."
+alias ls="ls -F -C --color=auto"
+alias la="ls -a"
+alias ll="ls -lrtshaS"
+type git 2>&1 >/dev/null && alias status="git status"
+type git 2>&1 >/dev/null && alias fetch="git fetch"
+type git 2>&1 >/dev/null && alias pull="git pull"
+type git 2>&1 >/dev/null && alias push="git push"
+type git 2>&1 >/dev/null && alias branch="git branch"
+type git 2>&1 >/dev/null && alias stash="git stash"
+type git 2>&1 >/dev/null && alias apply="git stash apply"
+type golangci-lint 2>&1 >/dev/null && alias gol='golangci-lint --color always -j 8 run ./...'
+type tmate 2>&1 >/dev/null && alias tm="(unset TMUX && tmate)"
+type mocp 2>&1 >/dev/null && alias mp="mocp -T darkdot_theme"

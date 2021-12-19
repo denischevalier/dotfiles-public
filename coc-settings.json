@@ -1,0 +1,18 @@
+{
+  "languageserver": {
+    "haskell": {
+      "command": "haskell-language-server-wrapper",
+      "args": ["--lsp"],
+      "rootPatterns": ["*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml", ".stack.yaml", ".hie-bios", "BUILD.bazel", "cabal.config"],
+      "filetypes": ["hs", "lhs", "haskell", "lhaskell"],
+      "initializationOptions": {
+        "languageServerHaskell": {
+          "hlintOn": true,
+          "maxNumberOfProblems": 10,
+          "completionSnippetsOn": true
+        }
+      }
+    },
+  },
+  "coc.preferences.rootPatterns": [".gitmodules", ".vim"]
+}
