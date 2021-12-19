@@ -5,7 +5,7 @@ autoload -Uz compinit
 compinit
 
 # Load scripts
-[[ -s "${zshenv}"/.prezto/init.zsh ]] && source "${HOME}"/.prezto/init.zsh 
+[[ -s "${zshenv}"/.zprezto/init.zsh ]] && source "${HOME}"/.zprezto/init.zsh 
 
 [ -f "${HOME}/.fzf.zsh" ] && source "${HOME}/.fzf.zsh"
 
