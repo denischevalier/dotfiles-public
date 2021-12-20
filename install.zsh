@@ -32,6 +32,11 @@ copy_files() {
   [[ -f "${HOME}/.config/ncspot/config.toml" ]] && mv "${HOME}/.config/ncspot/config.toml" "${HOME}/.config/ncspot/config.toml.old"
   ln -s "${dir}/ncspot.toml" "${HOME}/.config/ncspot/config.toml"
 
+  # Lynx
+  [[ -d "${HOME}/.config/lynx" ]] || mkdir "${HOME}/.config/lynx"
+  [[ -f "${HOME}/.config/lynx/lynx.cfg" ]] && mv "${HOME}/.config/lynx/lynx.cfg" "${HOME}/.config/lynx/lynx.cfg.old"
+  ln -s "${dir}/lynx.cfg" "${HOME}/.config/lynx/lynx.cfg"
+
   # ZSH
   [[ -d "${HOME}/.zsh" ]] && mv "${HOME}/.zsh" "${HOME}/.zsh.old"
   [[ -d "${HOME}/.zprezto" ]] && mv "${HOME}/.zprezto" "${HOME}/.zprezto.old"
@@ -68,7 +73,7 @@ preinstall() {
   # Homebrew
   type brew 2>&1 >/dev/null || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   brew install python3 bat moc neovim osx-cpu-temp bash coreutils gnu-sed git node go ctags fzf fortune golangci-lint\
-    golang-migrate lynx neofetch ripgrep subversion tmate tmux ncspot defaultbrowser
+    golang-migrate lynx neofetch ripgrep subversion tmate tmux ncspot defaultbrowser lynx
   brew install --cask kitty
   brew install --cask amethyst
   brew install --cask min
