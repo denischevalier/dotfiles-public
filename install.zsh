@@ -27,6 +27,11 @@ copy_files() {
   ln -s "${dir}/nord.theme" "${HOME}/.config/bashtop/user_themes/nord.theme"
   ln -s "${dir}/bashtop.cfg" "${HOME}/.config/bashtop/bashtop.cfg"
 
+  # NCSpot
+  [[ -d "${HOME}/.config/ncspot" ]] || mkdir "${HOME}/.config/ncspot"
+  [[ -f "${HOME}/.config/ncspot/config.toml" ]] && mv "${HOME}/.config/ncspot/config.toml" "${HOME}/.config/ncspot/config.toml.old"
+  ln -s "${dir}/ncspot.toml" "${HOME}/.config/ncspot/config.toml"
+
   # ZSH
   [[ -d "${HOME}/.zsh" ]] && mv "${HOME}/.zsh" "${HOME}/.zsh.old"
   [[ -d "${HOME}/.zprezto" ]] && mv "${HOME}/.zprezto" "${HOME}/.zprezto.old"
@@ -63,7 +68,7 @@ preinstall() {
   # Homebrew
   type brew 2>&1 >/dev/null || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   brew install python3 bat moc neovim osx-cpu-temp bash coreutils gnu-sed git node go ctags fzf fortune golangci-lint\
-    golang-migrate lynx neofetch ripgrep subversion tmate tmux
+    golang-migrate lynx neofetch ripgrep subversion tmate tmux ncspot
   brew install --cask kitty
   brew install --cask amethyst
   brew install --cask min
@@ -87,11 +92,20 @@ preinstall() {
 }
 
 postinstall() {
+  # zprezto
+  cd "${HOME}/.zprezto"
+  git pull
+  git submodule sync --recursive
+  git submodule update --init --recursive
+
   # NeoVim plugins
   sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   nvim -c "PlugInstall|qa"
   nvim -c "CocInstall coc-python coc-fzf-preview coc-golines coc-highlight coc-markdownlint coc-markdown-preview-enhanced coc-prettier coc-sh coc-yaml coc-viml coc-git coc-json coc-go coc-haskell coc-solargraph|qa"
+
+  # zshrc
+  source "${HOME}/.zshrc"
 }
 
 read -p "Do you want to install prerequisites? [y/n]" -n 1 -r

@@ -1,0 +1,18 @@
+use_nerdfont = true
+notify = true
+[theme]
+background = "transparent"
+primary = "white"
+secondary = "blue"
+title = "cyan"
+playing = "green"
+playing_bg = "light blue"
+highlight = "black"
+highlight_bg = "light blue"
+error = "light white"
+error_bg = "red"
+statusbar_progress = "blue"
+statusbar = "black"
+statusbar_bg = "light blue"
+cmdline = "black"
+cmdline_bg = "white"
