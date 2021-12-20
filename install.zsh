@@ -68,7 +68,7 @@ preinstall() {
   # Homebrew
   type brew 2>&1 >/dev/null || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   brew install python3 bat moc neovim osx-cpu-temp bash coreutils gnu-sed git node go ctags fzf fortune golangci-lint\
-    golang-migrate lynx neofetch ripgrep subversion tmate tmux ncspot
+    golang-migrate lynx neofetch ripgrep subversion tmate tmux ncspot defaultbrowser
   brew install --cask kitty
   brew install --cask amethyst
   brew install --cask min
@@ -106,6 +106,9 @@ postinstall() {
 
   # zshrc
   source "${HOME}/.zshrc"
+
+  # default browser
+  defaultbrowser min
 }
 
 read -p "Do you want to install prerequisites? [y/n]" -n 1 -r
