@@ -5,8 +5,5 @@
 	path = zsh/prezto
 	url = git@github.com:sorin-ionescu/prezto.git
 [submodule "vim/plugged/Align"]
-	path = vim/plugged/Align
-	url = git@github.com:vim-scripts/Align.git
-[submodule "Align"]
-	path = Align
-	url = git@github.com:vim-scripts/Align.git
+        path = vim/plugged/Align
+        url = git@github.com:vim-scripts/Align.git
