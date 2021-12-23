@@ -27,6 +27,11 @@ copy_files() {
   ln -s "${dir}/nord.theme" "${HOME}/.config/bashtop/user_themes/nord.theme"
   ln -s "${dir}/bashtop.cfg" "${HOME}/.config/bashtop/bashtop.cfg"
 
+  # HTOP
+  [[ -d "${HOME}/.config/htop" ]] || mkdir "${HOME}/.config/htop"
+  [[ -f "${HOME}/.config/htop/htoprc" ]] && mv "${HOME}/.config/htop/htoprc" "${HOME}/.config/htop/htoprc.old"
+  ln -s "${dir}/htoprc" "${HOME}/.config/htop/htoprc"
+
   # NCSpot
   [[ -d "${HOME}/.config/ncspot" ]] || mkdir "${HOME}/.config/ncspot"
   [[ -f "${HOME}/.config/ncspot/config.toml" ]] && mv "${HOME}/.config/ncspot/config.toml" "${HOME}/.config/ncspot/config.toml.old"
@@ -73,7 +78,7 @@ preinstall() {
   # Homebrew
   type brew 2>&1 >/dev/null || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   brew install python3 bat moc neovim osx-cpu-temp bash coreutils gnu-sed git node go ctags fzf fortune golangci-lint\
-    golang-migrate lynx neofetch ripgrep subversion tmate tmux ncspot defaultbrowser lynx
+    golang-migrate lynx neofetch ripgrep subversion tmate tmux ncspot defaultbrowser lynx htop
   brew install --cask kitty
   brew install --cask amethyst
   brew install --cask min
