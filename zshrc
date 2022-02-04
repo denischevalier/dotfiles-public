@@ -21,6 +21,16 @@ compinit
 [[ -s "${zshenv}/promptline.zsh" ]] && source "${zshenv}/promptline.zsh" # Theme
 [[ -s "${zshenv}/zsh-dircolors-nord/zsh-dircolors-nord.zsh" ]] && source "${zshenv}/zsh-dircolors-nord/zsh-dircolors-nord.zsh"
 
+set -o autocd
+set -o cdsilent
+set -o completealiases
+set -o completeinword
+set -o extendedglob
+set -o extendedhistory
+set -o globcomplete
+#set -o menucomplete
+set -o vi
+
 local cols=`tput cols`
 local rows=`tput lines`
 
